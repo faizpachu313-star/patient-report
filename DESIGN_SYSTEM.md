@@ -48,6 +48,6 @@ horizontally centred, rows 1–3 repeat on every printed page, gridlines hidden,
   are known), TOTAL PATIENTS + TOTAL BILL rows, COMBINED rows, then the `RADIOLOGY DATA - OUT PATIENTS`
   section (`Sl No · Date of Visit · File Number · Patient · Consultation · Bill Amount (AED)`) with
   `Total Referrals Count` / `Total Bill Amount`. Months with no radiology data keep 5 blank fill-in rows.
-- Radiology names are Title Case without Mr/Ms; examinations in capitals as in the source (e.g. `MRI LUMBR C-`);
+- Radiology names are Title Case without Mr/Ms (first + second name only when the full name is unclear — see CLAUDE.md); examinations in capitals as in the source (e.g. `MRI LUMBR C-`);
   rows sorted by date. Use `scripts/add_radiology_sections.py` (styles copied from the Oct-2026 sheet).
 - Summary columns: Total Patients · Radiology Referrals · Radiology Bill (AED), with grand totals.

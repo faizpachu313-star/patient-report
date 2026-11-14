@@ -11,3 +11,8 @@ style (zebra banding, text dates, portrait pages).
 - After changing the master `.xlsx`, recalculate formulas and re-export the matching `.pdf`
   (`soffice --headless --convert-to pdf <file>.xlsx`) so the two stay in sync.
 - Keep the Summary sheet's per-month formulas pointing at each month's `TOTAL PATIENTS (VISITS)` cell.
+
+## Naming rule
+- If a patient's full name is not clear or not complete in the source (cut off, partly hidden,
+  unreadable), write only the **first and second name** (e.g. `Mr MUHAMMAD RIAZ MUHAMM` → `Muhammad Riaz`).
+  Do not guess the missing part. Names are Title Case without Mr/Ms/Mrs.
