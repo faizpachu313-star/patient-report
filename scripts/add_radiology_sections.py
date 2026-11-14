@@ -130,15 +130,65 @@ RADIOLOGY = {
         ("25.06.2026", "784-1992-1529043-0", "BARSHA SHRESTHA", "MRI", 782),
         ("28.06.2026", "784-1992-3107036-0", "NOOR UL HADI FAZALE RAHIM", "MRI", 782),
     ],
-    # No radiology data received yet -> blank fill-in rows
+    # No radiology data received yet -> blank fill-in rows (Jul, Aug)
     "Jul-2026": [],
     "Aug-2026": [],
-    "Sep-2026": [],
+    # From Faiz_Patient_Data_September-2026 (no bill amounts in source)
+    "Sep-2026": [
+        ('01.09.2026', 'TVIP01021143', 'Shabbir Ahmad Nasar Ul Din', 'CT SCAN', None),
+        ('02.09.2026', 'TVIP01014023', 'Supriya Karapu Laxminarayana Puli', 'US PREGNANT', None),
+        ('02.09.2026', 'TVIP01021249', 'Sumaira Naz Usman Rashid', 'US PREGNANT', None),
+        ('02.09.2026', 'TVIP01015398', 'Ameena Padinjarevattatheput Hukkas', 'US PREGNANT', None),
+        ('03.09.2026', 'TVIP01021417', 'Shahala Mol Vellarama', 'US PREGNANT', None),
+        ('03.09.2026', 'TVIP01013116', 'Fathima Risvana Madathil Abdul Rasak', 'US PREGNANT', None),
+        ('03.09.2026', 'TVIP01014947', 'Mercy Kpeta', 'US PREGNANT', None),
+        ('04.09.2026', '1013143', 'Jasna Asharaf Kunhayi', 'US PREGNANT', None),
+        ('05.09.2026', 'TVIP01021581', 'Reem Ghasan Morshed', 'US PREGNANT', None),
+        ('06.09.2026', 'TVIP00854813', 'Laila Rehman Abdul Rehman', 'US PREGNANT', None),
+        ('06.09.2026', 'TVIP01021758', 'Shaikha Ali Thani Ali Alshamsi', 'MRI CRV', None),
+        ('07.09.2026', 'TVIP01012534', 'Nadal Abdelelah Siddig Elzain', 'US PREGNANT', None),
+        ('08.09.2026', 'TVIP01021984', 'Sobia Rashid Muhammad Rashid', 'US PREGNANT', None),
+        ('09.09.2026', 'TVIP01022197', 'Wajid Ali Piao Gul', 'MRI LUMBR', None),
+        ('12.09.2026', 'TVIP01022461', 'Ameera Haroon Haroon', 'US PREGNANT', None),
+        ('12.09.2026', 'TVIP01022494', 'Musanif Shah Abdullah Shah', 'MRI ARM', None),
+        ('12.09.2026', 'TVIP00402597', 'Fatima Salama Alkatherei', 'MRI CRV', None),
+        ('13.09.2026', 'TVIP01022562', 'Sumaiya Mohammed Yasir Hamza', 'US PREGNANT', None),
+        ('13.09.2026', 'TVIP01013012', 'Asniya Valiyaveedu Abdul Kareem Abdul', 'US PREGNANT', None),
+        ('13.09.2026', 'TVIP01022522', 'Haider Khan Muhammad Gul', 'MRI LMBR', None),
+        ('14.09.2026', 'TVIP01022788', 'Khizar Hayat Qamar Abbas', 'CT SCAN', None),
+        ('14.09.2026', 'TVIP00983134', 'Enayat Ullah Gulab Din Marwat', 'MRI LUMBR', None),
+        ('14.09.2026', 'TVIP00965236', 'Shahid Zainudheen Zainudheen Kakkadavan Parammal', 'CT MAX', None),
+        ('15.09.2026', 'TVIP01013619', 'Uzma Mustaqeem Mohd Mustaqeem', 'US PREGNANT', None),
+        ('15.09.2026', 'TVIP01022844', 'Muhammad Asif Mir Kazim Mehmood', 'CT MAX', None),
+        ('15.09.2026', 'TVIP01022861', 'Nasser Mohammed Khalfan Al Neyadi', 'MRI B SHOULDER', None),
+        ('16.09.2026', 'TVIP01023036', 'Ranjana Majhi', 'US PREGNANT', None),
+        ('16.09.2026', 'TVIP01023039', 'Shamima Haque Nishi', 'US PREGNANT', None),
+        ('17.09.2026', 'TVIP01014624', 'Ahsanah Rahman Azizur Rahman', 'US PREGNANT', None),
+        ('17.09.2026', 'TVIP01023249', 'Anusha Sandamali Maltunga Arachchile', 'MRI LUMBR', None),
+        ('17.09.2026', 'TVIP01023104', 'Amal Abdulla Saad Alshanini', 'MRI KNEE', None),
+        ('19.09.2026', 'TVIP01023366', 'Fatema Israt Mohammad Alamgir Alam', 'US PREGNANT', None),
+        ('19.09.2026', 'TVIP01023324', 'Ariane Kaye Bucasas Badua', 'US PREGNANT', None),
+        ('19.09.2026', 'TVIP01023351', 'Abhishek Gond Narvadeshwar Gond', 'CT SCAN', None),
+        ('22.09.2026', 'TVIP01023846', 'Osman Rohani', 'CT SCAN', None),
+        ('22.09.2026', 'TVIP01023860', 'Safeer Kunnath Moiou Olavan Kunnath', 'MRI LUMBR', None),
+        ('22.09.2026', 'TVIP00851673', 'Muhammad Waseem Ashraf Muhammad', 'MRI LUMBR', None),
+        ('23.09.2026', 'TVIP01023924', 'Uzma Siraj Siraj Jamil', 'US PREGNANT', None),
+        ('26.09.2026', 'TVIP01024200', 'Aliza Anum Syed Mohammed Zaid Khawja', 'US PREGNANT', None),
+        ('26.09.2026', 'TVIP01024211', 'Kala Miah Abo Ddor Ali Ddor', 'CT SCAN', None),
+        ('26.09.2026', 'TVIP00970990', 'Alia Huwaiden Thiban Ali Alketbi', 'MRI KNEE', None),
+        ('27.09.2026', 'TVIP01023351', 'Abhishek Gond Narvadeshwar Gond', 'MRI HIP WC', None),
+        ('29.09.2026', 'TVIP00579183', 'Emaan Blaisha Muhammed', 'MRI', None),
+        ('30.09.2026', 'TVIP01024887', 'Tilak Bahadur', 'MRI', None),
+        ('30.09.2026', 'TVIP01024882', None, 'US RETRO', None, 'Patient name not given in the source file (Faiz_Patient_Data_September-2026).'),
+        ('30.09.2026', 'TVIP01023036', 'Ranjana Majhi', 'US PREGNANT', None),
+    ],
 }
 BLANK_ROWS = 5
 
 
 def clean_name(n):
+    if not n:
+        return None
     parts = n.split()
     if parts[0].lower() in ("mr", "ms", "mrs"):
         parts = parts[1:]
@@ -157,6 +207,9 @@ def put(ws, ref, src_cell, value=None):
 def main(path):
     wb = openpyxl.load_workbook(path)
     T = wb["Oct-2026"]  # style template
+    # locate the template's radiology total rows by label (rows can shift when Oct gets new entries)
+    TC = next(r for r in range(1, T.max_row + 1) if T.cell(r, 4).value == "Total Referrals Count")
+    TB = TC + 1
     for sheet, rows in RADIOLOGY.items():
         ws = wb[sheet]
         t = ws.max_row          # existing TOTAL PATIENTS row
@@ -222,14 +275,14 @@ def main(path):
             if note:
                 ws[f"B{r}" if "31.12" in d else f"D{r}"].comment = Comment(note[0], "Claude")
 
-        put(ws, f"D{cnt}", T["D120"], "Total Referrals Count")
-        put(ws, f"E{cnt}", T["E120"], f"=COUNTA(C{first}:C{lastr})")
-        put(ws, f"D{bill}", T["D121"], "Total Bill Amount")
-        put(ws, f"E{bill}", T["E121"])
-        put(ws, f"F{bill}", T["F121"], f"=SUM(F{first}:F{lastr})")
+        put(ws, f"D{cnt}", T[f"D{TC}"], "Total Referrals Count")
+        put(ws, f"E{cnt}", T[f"E{TC}"], f"=COUNTA(C{first}:C{lastr})")
+        put(ws, f"D{bill}", T[f"D{TB}"], "Total Bill Amount")
+        put(ws, f"E{bill}", T[f"E{TB}"])
+        put(ws, f"F{bill}", T[f"F{TB}"], f"=SUM(F{first}:F{lastr})")
         ws.merge_cells(f"D{bill}:E{bill}")
         for r in (cnt, bill):
-            ws.row_dimensions[r].height = T.row_dimensions[120].height
+            ws.row_dimensions[r].height = T.row_dimensions[TC].height
 
         for col in "ABCDEF":
             put(ws, f"{col}{cp}", T[f"{col}53"])
@@ -265,7 +318,7 @@ def main(path):
     S.column_dimensions["D"].width = 22
     S.column_dimensions["E"].width = 22
     S["A19"] = (S["A19"].value.rstrip(".") + ". Radiology referrals: from the Spectrum Center "
-                "referral sheets / radiology screenshots (none received yet for Jul-Sep 2026).")
+                "referral sheets / radiology screenshots; Sep 2026 from the September-2026 file; none received yet for Jul-Aug 2026.")
     S.row_dimensions[19].height = 45
 
     wb.save(path)
