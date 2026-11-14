@@ -27,6 +27,7 @@ style (zebra banding, text dates, portrait pages).
 - **Duplicate rule:** same patient + same date + same doctor/visit = a double entry → keep only one
   (merge any extra detail into the kept row). The same patient on different dates is a separate visit
   and is always kept, however many times they come.
-- Missing bill amounts stay blank until the data is cleared; keep whatever amounts exist.
+- Missing bill amounts stay blank until the data is cleared; keep whatever amounts exist. When one visit
+  lists an amount per doctor (`454.2/75`), enter the total and keep the breakdown in a cell note.
 - Rebuild order: base design workbook → `scripts/remove_duplicates.py` → `scripts/merge_uploads_*.py`
-  → `scripts/add_radiology_sections.py` → recalc → PDF.
+  → `scripts/add_radiology_sections.py` → `scripts/add_bill_amounts_*.py` → recalc → PDF.

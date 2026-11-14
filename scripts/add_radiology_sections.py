@@ -130,8 +130,45 @@ RADIOLOGY = {
         ("25.06.2026", "784-1992-1529043-0", "BARSHA SHRESTHA", "MRI", 782),
         ("28.06.2026", "784-1992-3107036-0", "NOOR UL HADI FAZALE RAHIM", "MRI", 782),
     ],
-    # No radiology data received yet -> blank fill-in rows (Jul)
-    "Jul-2026": [],
+    # From faz1_1.xlsx, Sheet1 (July out-patient radiology with bills; total 12,133)
+    "Jul-2026": [
+        ('02.07.2026', 'TVIP01013613', 'ZEINA RYAD FAISAL', 'RADIOLOGY', 290),
+        ('02.07.2026', 'TVIP00828207', 'ALAA OSMAN ELSHEIKH IDRES HAMID', 'RADIOLOGY', 390),
+        ('02.07.2026', 'TVIP01013619', 'UZMA MUSTAQEEM MOHD MUSTAQEEM', 'RADIOLOGY', 290),
+        ('02.07.2026', 'TVIP01013557', 'FATIMA SHAMSELDIN YASIN SALIH', 'RADIOLOGY', 250),
+        ('05.07.2026', 'TVIP00960186', 'JASMIN TOLENTINO TOLENTINO', 'RADIOLOGY', 388),
+        ('05.07.2026', 'TVIP01003058', 'LILIAN RADWAN', 'RADIOLOGY', 300),
+        ('06.07.2026', 'TVIP01014010', 'AKHILA SUKUMARAN', 'RADIOLOGY', 388, "Name in source: 'AKHILA SUKUMARAN NAIR SUKUMARAN NAIR R'."),
+        ('06.07.2026', 'TVIP01014023', 'SUPRIYA KARAPU LAXMINARAYANA PULI', 'RADIOLOGY', 263),
+        ('06.07.2026', 'TVIP01014060', 'SUMIA BIBI INAYAT', 'RADIOLOGY', 200),
+        ('07.07.2026', 'TVIP01014259', 'ASIA BIBI MUHAMMAD SHAFIQ', 'RADIOLOGY', 290),
+        ('08.07.2026', 'TVIP01014327', 'HIBA MUSTAFA HAMZA BABIKER', 'RADIOLOGY', 388),
+        ('09.07.2026', 'TVIP01014503', 'SALMA JUNAID JUNAID REHMAN', 'RADIOLOGY', 388),
+        ('10.07.2026', '575446', 'ZAINAB TAYUB', 'RADIOLOGY', 390, "Name in source: 'ZAINAB TAYUBANSARI SURENDRAKEDARE'."),
+        ('10.07.2026', 'TVIP01014624', 'AHSANAH RAHMAN AZIZUR RAHMAN', 'RADIOLOGY', 290, "Name in source: 'AHSANAH RAHMANAZIZUR RAHMAN'. File no. written '1014624' in source; same patient's file in Sep-2026 is TVIP01014624."),
+        ('12.07.2026', 'TVIP00869004', 'UMMA SALMA ALI AHAMED', 'RADIOLOGY', 380),
+        ('12.07.2026', 'TVIP01014932', 'LISAMOL STEPHEN STEPHEN', 'RADIOLOGY', 290),
+        ('13.07.2026', 'TVIP01014947', 'MERCY KPETA', 'RADIOLOGY', 262),
+        ('13.07.2026', 'TVIP01012388', 'JASEENA THUNDA KACHI ABDULLA OLIYANTAKATH UMMER', 'RADIOLOGY', 388),
+        ('13.07.2026', 'TVIP01014948', 'SONIKA PULAMI', 'RADIOLOGY', 388),
+        ('15.07.2026', 'TVIP01015265', 'OLA FOUAD ALREFAI', 'RADIOLOGY', 380),
+        ('15.07.2026', 'TVIP00646958', 'SHERRY ANN SABADO CARAIG', 'RADIOLOGY', 230),
+        ('16.07.2026', 'TVIP01015380', 'ROUA MHD KHALED ALBUKAEY', 'RADIOLOGY', 350),
+        ('16.07.2026', 'TVIP01015398', 'AMEENA PADINJAREVATTATHEPUT HUKKAS', 'RADIOLOGY', 290),
+        ('16.07.2026', 'TVIP01015411', 'FATHIMA SHAHALA POLAKARANDI MARSHOO', 'RADIOLOGY', 290),
+        ('17.07.2026', '789835', 'SHAHEERA SHAHUL SHAHUL HAMEED', 'RADIOLOGY', 390),
+        ('19.07.2026', 'TVIP01012816', 'JYOTHIKA GUDISE POSHANNA GUDISE', 'RADIOLOGY', 390),
+        ('22.07.2026', 'TVIP01012502', 'MARYAM MOHAMMAD AKBAR', 'RADIOLOGY', 390),
+        ('22.07.2026', 'TVIP01016198', 'HANAN MOHAMMED SAEED BALHAF', 'RADIOLOGY', 390),
+        ('22.07.2026', 'TVIP01016227', 'HIRA SALEEM SHOAIB', 'RADIOLOGY', 390),
+        ('23.07.2026', 'TVIP01016247', 'JEMILA GEMADO ROBA', 'RADIOLOGY', 260),
+        ('23.07.2026', 'TVIP01016332', 'KAMAL JANA FAZALI', 'RADIOLOGY', 390),
+        ('23.07.2026', 'TVIP01016349', 'WASEEMA HAIDARY', 'RADIOLOGY', 390),
+        ('24.07.2026', '1016375', 'JANNATUN', 'RADIOLOGY', 390),
+        ('26.07.2026', 'TVIP01016542', 'ASMA ALTAHER SAAD HAMZA', 'RADIOLOGY', 390),
+        ('26.07.2026', 'TVIP01016557', 'NAZIA MIR WALI KHAN', 'RADIOLOGY', 260),
+        ('30.07.2026', 'TVIP00791418', 'RAHILA MOHAMMED MULLA MOHAMMED ALI', 'RADIOLOGY', 350),
+    ],
     # From Faiz_Patient_Data_August-2026 (no bill amounts in source)
     "Aug-2026": [
         ('03.08.2026', 'TVIP01017700', 'Faisal Khaled Awad Salem Alhanaee', 'MRI', None),
@@ -368,7 +405,7 @@ def main(path):
     S.column_dimensions["D"].width = 22
     S.column_dimensions["E"].width = 22
     S["A19"] = (S["A19"].value.rstrip(".") + ". Radiology referrals: from the Spectrum Center "
-                "referral sheets / radiology screenshots; Aug & Sep 2026 from the August/September-2026 files; none received yet for Jul 2026.")
+                "referral sheets / radiology screenshots; Aug & Sep 2026 from the August/September-2026 files; Jul 2026 from the faz1_1 radiology sheet.")
     S.row_dimensions[19].height = 45
 
     wb.save(path)
