@@ -44,4 +44,10 @@ horizontally centred, rows 1–3 repeat on every printed page, gridlines hidden,
 
 - Totals are always formulas (`COUNTA`, `SUM`), never typed numbers.
 - The Summary sheet uses the same tokens (name line, navy title, header row, no banding, navy grand total).
-- Months without bill data keep columns A–E only; add column F once amounts are available.
+- Every month sheet has the full Oct-2026 model: main table A–F (Bill Amount column, blank until amounts
+  are known), TOTAL PATIENTS + TOTAL BILL rows, COMBINED rows, then the `RADIOLOGY DATA - OUT PATIENTS`
+  section (`Sl No · Date of Visit · File Number · Patient · Consultation · Bill Amount (AED)`) with
+  `Total Referrals Count` / `Total Bill Amount`. Months with no radiology data keep 5 blank fill-in rows.
+- Radiology names are Title Case without Mr/Ms; examinations in capitals as in the source (e.g. `MRI LUMBR C-`);
+  rows sorted by date. Use `scripts/add_radiology_sections.py` (styles copied from the Oct-2026 sheet).
+- Summary columns: Total Patients · Radiology Referrals · Radiology Bill (AED), with grand totals.
