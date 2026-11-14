@@ -21,5 +21,9 @@ style (zebra banding, text dates, portrait pages).
 - Before adding anything, match every source row against the master by date + file number, then by
   name (radiology referral lists often use another file system, e.g. Town Centre EMR #, and the
   referral date differs from the scan date). Only add rows that are genuinely missing; never duplicate.
-- Rebuild order: base design workbook → `scripts/merge_uploads_*.py` → `scripts/add_radiology_sections.py`
-  → recalc → PDF.
+- **Duplicate rule:** same patient + same date + same doctor/visit = a double entry → keep only one
+  (merge any extra detail into the kept row). The same patient on different dates is a separate visit
+  and is always kept, however many times they come.
+- Missing bill amounts stay blank until the data is cleared; keep whatever amounts exist.
+- Rebuild order: base design workbook → `scripts/remove_duplicates.py` → `scripts/merge_uploads_*.py`
+  → `scripts/add_radiology_sections.py` → recalc → PDF.
