@@ -21,6 +21,9 @@ style (zebra banding, text dates, portrait pages).
 - Before adding anything, match every source row against the master by date + file number, then by
   name (radiology referral lists often use another file system, e.g. Town Centre EMR #, and the
   referral date differs from the scan date). Only add rows that are genuinely missing; never duplicate.
+- Match tolerantly as well: exported files can carry an extra trailing digit on file numbers
+  (`TVIP010174555` = `TVIP01017455`), run-together names (`Jeganathanperumalperumal`) or a different
+  section (a 'visit' that is really a radiology referral). Same patient + same day = already there.
 - **Duplicate rule:** same patient + same date + same doctor/visit = a double entry → keep only one
   (merge any extra detail into the kept row). The same patient on different dates is a separate visit
   and is always kept, however many times they come.

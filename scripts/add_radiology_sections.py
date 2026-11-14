@@ -130,9 +130,59 @@ RADIOLOGY = {
         ("25.06.2026", "784-1992-1529043-0", "BARSHA SHRESTHA", "MRI", 782),
         ("28.06.2026", "784-1992-3107036-0", "NOOR UL HADI FAZALE RAHIM", "MRI", 782),
     ],
-    # No radiology data received yet -> blank fill-in rows (Jul, Aug)
+    # No radiology data received yet -> blank fill-in rows (Jul)
     "Jul-2026": [],
-    "Aug-2026": [],
+    # From Faiz_Patient_Data_August-2026 (no bill amounts in source)
+    "Aug-2026": [
+        ('03.08.2026', 'TVIP01017700', 'Faisal Khaled Awad Salem Alhanaee', 'MRI', None),
+        ('05.08.2026', 'TVIP00383558', 'Noura Ramadan Mohammed Alblooshi', 'MRI', None),
+        ('05.08.2026', 'TVIP01012803', 'Farseena Abdul', 'US PREGNANT', None),
+        ('05.08.2026', 'TVIP00899382', 'Bushra Abdul', 'US PREGNANT', None),
+        ('05.08.2026', 'TVIP01017948', 'Eslam Salahaldin', 'US PREGNANT', None),
+        ('05.08.2026', 'TVIP01017956', 'Yassmin Wael', 'US PREGNANT', None),
+        ('05.08.2026', 'TVIP01012463', 'Mai Youssef', 'US PREGNANT', None),
+        ('06.08.2026', 'TVIP00870626', 'Aysha Saeed Abdulla Yaser Alkaabi', 'MRI', None),
+        ('06.08.2026', 'TVIP01018050', 'Theertha Puthiyapuray', 'US PREGNANT', None),
+        ('06.08.2026', 'TVIP00898744', 'Nihala Sherin Kaipadan Chalil', 'US PREGNANT', None, "Moved from Aug visits: the August-2026 file lists this as a radiology referral (name there 'Nihala Sherin'; full name from the marketing file)."),
+        ('06.08.2026', 'TVIP00922585', 'Beverly Ngajo Albaracin', 'US PREGNANT', None),
+        ('08.08.2026', '784-1985-3403496-6', 'Jay Singh Bohara', 'MRI', None),
+        ('08.08.2026', 'TVIP01018290', 'Niha Fathima', 'US PREGNANT', None),
+        ('08.08.2026', 'TVIP01018291', 'Noufiya Salahudeen', 'US PREGNANT', None),
+        ('09.08.2026', 'TVIP00063874', 'Amal Abdallah Alnuaimi', 'MRI', None),
+        ('09.08.2026', '526008408', 'Mai Suhail Mohammed Al Muharrami', 'MRI', None),
+        ('10.08.2026', '784-1986-5350376-7', 'Bipon Kumar Barua Sunil Barua', 'MRI', None),
+        ('10.08.2026', '784-1980-4036273-7', 'Fazal Jan Zahir Jan', 'CT', None),
+        ('12.08.2026', 'TRM027700', 'Shanda Abdulla Khamis', 'MRI', None),
+        ('12.08.2026', 'TVIP01018828', 'Sadia Sultana', 'US PREGNANT', None),
+        ('12.08.2026', 'TVIP01015684', 'Sadia Bibi', 'US PREGNANT', None),
+        ('13.08.2026', '506437977', 'Rubayea Salem Rubayea Aldhaheri', 'MRI', None),
+        ('13.08.2026', 'TVIP01018885', 'Semeena Varambanalu', 'US PREGNANT', None),
+        ('13.08.2026', 'TVIP01018920', 'Malaz Elbager', 'US PREGNANT', None),
+        ('16.08.2026', 'TVIP01019170', 'Shamla Kallarakkal', 'US PREGNANT', None),
+        ('16.08.2026', 'TVIP01019178', 'Muhsina Thattarathod', 'US PREGNANT', None),
+        ('16.08.2026', 'TVIP01012813', 'Noor Bina', 'US PREGNANT', None),
+        ('16.08.2026', 'TVIP01019155', 'Tanjina Akther', 'US TRANSVAGINAL', None),
+        ('17.08.2026', '784-2006-3523149-9', 'Sonu Jagga Singh', 'CT', None),
+        ('17.08.2026', 'TVIP01019287', 'Aisha Sarwar', 'US PREGNANT', None),
+        ('18.08.2026', '566707100', 'Aisha Mohamed Abdulghani', '3-MRI', None, 'Source gives file 566707100 for both Aisha Mohamed Abdulghani and Aidah Eisa Saleh Alruqaishi on 18 Aug.'),
+        ('18.08.2026', '566707100', 'Aidah Eisa Saleh Alruqaishi', '3-MRI', None, 'Source gives file 566707100 for both Aisha Mohamed Abdulghani and Aidah Eisa Saleh Alruqaishi on 18 Aug.'),
+        ('19.08.2026', '506194419', 'Abdulla Ahmed Ibrahim Alobeidli', 'MRI', None),
+        ('19.08.2026', 'TVIP01019555', 'Simi Aruldhas', 'US PREGNANT', None),
+        ('19.08.2026', 'TVIP01013011', 'Maryam Imtiaz', 'US PREGNANT', None),
+        ('22.08.2026', '503841100', 'Saif Obaid Saif Alwaly Alkindi', 'MRI', None),
+        ('23.08.2026', '509322423', 'Khuloud Taleb Mohammed Almemari', 'MRI', None),
+        ('23.08.2026', 'TVIP01019927', 'Irudaya Ancy', 'US PREGNANT', None),
+        ('24.08.2026', '507631090', 'Sabha Ali Obaid Ali Alazeezi', 'MRI', None),
+        ('26.08.2026', 'TVIP01020441', 'Israt Jahan', 'US PREGNANT', None),
+        ('26.08.2026', 'TVIP01020489', 'Ebtissam Abdelrahmin', 'US PREGNANT', None),
+        ('27.08.2026', '504445500', 'Sultan Amhi Humaid Amhi Almansoori', 'MRI', None),
+        ('29.08.2026', '784-1996-2778384-0', 'Muhammad Tahir Rab Nawaz', 'MRI', None),
+        ('29.08.2026', '507831138', 'Mariam Hamad Rashed Alnuaimi', 'MRI', None),
+        ('30.08.2026', '784-1986-5915314-6', 'Usankutty Na Tukallu', 'MRI', None),
+        ('30.08.2026', '507532203', 'Fatima Saeed Abdulrahman Alkaabi', 'MRI', None),
+        ('30.08.2026', 'TVIP01020965', 'Wesam Ahmed', 'US PREGNANT', None),
+        ('30.08.2026', 'TVIP01020834', 'Ajna Nizar Nizar S J', 'US PREGNANT', None),
+    ],
     # From Faiz_Patient_Data_September-2026 (no bill amounts in source)
     "Sep-2026": [
         ('01.09.2026', 'TVIP01021143', 'Shabbir Ahmad Nasar Ul Din', 'CT SCAN', None),
@@ -318,7 +368,7 @@ def main(path):
     S.column_dimensions["D"].width = 22
     S.column_dimensions["E"].width = 22
     S["A19"] = (S["A19"].value.rstrip(".") + ". Radiology referrals: from the Spectrum Center "
-                "referral sheets / radiology screenshots; Sep 2026 from the September-2026 file; none received yet for Jul-Aug 2026.")
+                "referral sheets / radiology screenshots; Aug & Sep 2026 from the August/September-2026 files; none received yet for Jul 2026.")
     S.row_dimensions[19].height = 45
 
     wb.save(path)

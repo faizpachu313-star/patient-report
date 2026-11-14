@@ -20,6 +20,10 @@ DUPLICATES = [
     # same visit entered twice (doctor names vs departments): keep one row with both
     ("Feb-2026", "23.02.2026", "TMC128585", "GP, Orthopedic, Lab, X-Ray (Dr Afsheen, Dr Agnel)"),
 ]
+# same patient, same day, entered once per file number: keep one row listing both numbers
+NAME_DUPLICATES = [
+    ("Dec-2025", "14.12.2025", "Mohd Zaseem", "125122; 125123"),
+]
 
 
 def shift(f, idx, only_sheet=None):
@@ -71,7 +75,16 @@ def main(path):
             ws.cell(keep, 5).value = merged_service
         delete_row(wb, ws, drop)
         print(f"{sheet}: removed duplicate of {fno} on {d} (row {drop})")
-    for sheet in {s for s, *_ in DUPLICATES}:
+    for sheet, d, name, files in NAME_DUPLICATES:
+        ws = wb[sheet]
+        dd = datetime.strptime(d, "%d.%m.%Y")
+        rows = [r for r in range(4, ws.max_row + 1)
+                if ws.cell(r, 2).value == dd and ws.cell(r, 4).value == name]
+        assert len(rows) == 2, (sheet, d, name, rows)
+        ws.cell(rows[0], 3).value = files
+        delete_row(wb, ws, rows[1])
+        print(f"{sheet}: merged duplicate {name} on {d} (row {rows[1]})")
+    for sheet in {s for s, *_ in DUPLICATES + NAME_DUPLICATES}:
         ws = wb[sheet]
         n = 0
         for r in range(4, ws.max_row + 1):
