@@ -12,6 +12,10 @@ style (zebra banding, text dates, portrait pages).
   (`soffice --headless --convert-to pdf <file>.xlsx`) so the two stay in sync.
 - Keep the Summary sheet's per-month formulas pointing at each month's `TOTAL PATIENTS (VISITS)` cell.
 
+## File numbers
+- Nov 2025 - Jun 2026 file numbers carry the `TMC` prefix (`TMC124285`, no space). Emirates IDs
+  (`784-...`) and other non-TMC IDs are left as they are.
+
 ## Naming rule
 - If a patient's full name is not clear or not complete in the source (cut off, partly hidden,
   unreadable), write only the **first and second name** (e.g. `Mr MUHAMMAD RIAZ MUHAMM` → `Muhammad Riaz`).
@@ -30,4 +34,4 @@ style (zebra banding, text dates, portrait pages).
 - Missing bill amounts stay blank until the data is cleared; keep whatever amounts exist. When one visit
   lists an amount per doctor (`454.2/75`), enter the total and keep the breakdown in a cell note.
 - Rebuild order: base design workbook → `scripts/remove_duplicates.py` → `scripts/merge_uploads_*.py`
-  → `scripts/add_radiology_sections.py` → `scripts/add_bill_amounts_*.py` → recalc → PDF.
+  → `scripts/add_radiology_sections.py` → `scripts/prefix_tmc.py` → `scripts/add_bill_amounts_*.py` → recalc → PDF.
