@@ -383,16 +383,19 @@ def main(path):
             ws.row_dimensions[r].height = T.row_dimensions[53].height
         print(sheet, "referrals", len(data), "rows", t, "->", bill)
 
-    # -- Summary: Patients Bill (D), Radiology Referrals (E), Radiology Bill (F) --
+    # -- Summary: Patients Bill (D), Radiology Referrals (E), Radiology Bill (F),
+    #    Total Count (G = C + E), Total Revenue (H = D + F) --
     S = wb["Summary"]
     for rng in list(S.merged_cells.ranges):
         S.unmerge_cells(str(rng))
     for r in (1, 2):
-        for col in "DEF":
+        for col in "DEFGH":
             put(S, f"{col}{r}", S[f"C{r}"])
     put(S, "D3", S["C3"], "Patients Bill (AED)")
     put(S, "E3", S["C3"], "Radiology Referrals")
     put(S, "F3", S["C3"], "Radiology Bill (AED)")
+    put(S, "G3", S["C3"], "Total Count (Patients + Referrals)")
+    put(S, "H3", S["C3"], "Total Revenue (AED)")
     for i, sheet in enumerate(wb.sheetnames[1:]):
         r = 4 + i
         ws = wb[sheet]
@@ -402,15 +405,21 @@ def main(path):
         put(S, f"D{r}", S[f"C{r}"], f"='{sheet}'!F{bill_row}").number_format = "#,##0.00"
         put(S, f"E{r}", S[f"C{r}"], f"='{sheet}'!E{cnt_row}")
         put(S, f"F{r}", S[f"C{r}"], f"='{sheet}'!F{cnt_row + 1}").number_format = "#,##0.00"
-    for col in "DEF":
+        put(S, f"G{r}", S[f"C{r}"], f"=C{r}+E{r}")
+        put(S, f"H{r}", S[f"C{r}"], f"=D{r}+F{r}").number_format = "#,##0.00"
+    for col in "DEFGH":
         put(S, f"{col}16", S["C16"])
     put(S, "D17", S["C17"], "=SUM(D4:D15)").number_format = "#,##0.00"
     put(S, "E17", S["C17"], "=SUM(E4:E15)")
     put(S, "F17", S["C17"], "=SUM(F4:F15)").number_format = "#,##0.00"
-    for ref in ("A1:F1", "A2:F2", "A16:F16", "A17:B17", "A19:F19"):
+    put(S, "G17", S["C17"], "=SUM(G4:G15)")
+    put(S, "H17", S["C17"], "=SUM(H4:H15)").number_format = "#,##0.00"
+    for ref in ("A1:H1", "A2:H2", "A16:H16", "A17:B17", "A19:H19"):
         S.merge_cells(ref)
-    for col in "DEF":
-        S.column_dimensions[col].width = 22
+    S.row_dimensions[3].height = 45  # room for the wrapped column headings
+    S.column_dimensions["B"].width = 20
+    for col in "CDEFGH":
+        S.column_dimensions[col].width = 18
     S["A19"] = (S["A19"].value.rstrip(".") + ". Radiology referrals: from the Spectrum Center "
                 "referral sheets / radiology screenshots; Aug & Sep 2026 from the August/September-2026 files; Jul 2026 from the faz1_1 radiology sheet.")
     S.row_dimensions[19].height = 45
