@@ -62,7 +62,8 @@ style (zebra banding, text dates, portrait pages).
 - Background (user note, for understanding only - never used to fill or change amounts):
   amounts for the same service vary with the patient's insurance; local (UAE national) patients
   usually have higher amounts, but they are few in this data so far. First visits are usually
-  similar, extra doctors add invoices, follow-ups often have none, radiology prices vary slightly.
+  similar, extra doctors add invoices, follow-ups often have none, radiology prices vary slightly;
+  physio amounts change with the body part treated.
 
 ## Naming rule
 - If a patient's full name is not clear or not complete in the source (cut off, partly hidden,
