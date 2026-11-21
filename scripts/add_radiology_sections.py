@@ -269,6 +269,8 @@ RADIOLOGY = {
         ('30.09.2026', 'TVIP01024882', None, 'US RETRO', None, 'Patient name not given in the source file (Faiz_Patient_Data_September-2026).'),
         ('30.09.2026', 'TVIP01023036', 'Ranjana Majhi', 'US PREGNANT', None),
     ],
+    # No radiology data received yet -> blank fill-in rows
+    "Nov-2026": [],
 }
 BLANK_ROWS = 5
 
@@ -407,22 +409,23 @@ def main(path):
         put(S, f"F{r}", S[f"C{r}"], f"='{sheet}'!F{cnt_row + 1}").number_format = "#,##0.00"
         put(S, f"G{r}", S[f"C{r}"], f"=C{r}+E{r}")
         put(S, f"H{r}", S[f"C{r}"], f"=D{r}+F{r}").number_format = "#,##0.00"
+    last = 3 + len(wb.sheetnames[1:])          # last month row
+    sp, tot, note = last + 1, last + 2, last + 4  # spacer, grand total, note
     for col in "DEFGH":
-        put(S, f"{col}16", S["C16"])
-    put(S, "D17", S["C17"], "=SUM(D4:D15)").number_format = "#,##0.00"
-    put(S, "E17", S["C17"], "=SUM(E4:E15)")
-    put(S, "F17", S["C17"], "=SUM(F4:F15)").number_format = "#,##0.00"
-    put(S, "G17", S["C17"], "=SUM(G4:G15)")
-    put(S, "H17", S["C17"], "=SUM(H4:H15)").number_format = "#,##0.00"
-    for ref in ("A1:H1", "A2:H2", "A16:H16", "A17:B17", "A19:H19"):
+        put(S, f"{col}{sp}", S[f"C{sp}"])
+    for col, fmt in zip("DEFGH", ("#,##0.00", None, "#,##0.00", None, "#,##0.00")):
+        c = put(S, f"{col}{tot}", S[f"C{tot}"], f"=SUM({col}4:{col}{last})")
+        if fmt:
+            c.number_format = fmt
+    for ref in ("A1:H1", "A2:H2", f"A{sp}:H{sp}", f"A{tot}:B{tot}", f"A{note}:H{note}"):
         S.merge_cells(ref)
     S.row_dimensions[3].height = 45  # room for the wrapped column headings
     S.column_dimensions["B"].width = 20
     for col in "CDEFGH":
         S.column_dimensions[col].width = 18
-    S["A19"] = (S["A19"].value.rstrip(".") + ". Radiology referrals: from the Spectrum Center "
+    S[f"A{note}"] = (S[f"A{note}"].value.rstrip(".") + ". Radiology referrals: from the Spectrum Center "
                 "referral sheets / radiology screenshots; Aug & Sep 2026 from the August/September-2026 files; Jul 2026 from the faz1_1 radiology sheet.")
-    S.row_dimensions[19].height = 45
+    S.row_dimensions[note].height = 45
 
     wb.save(path)
 

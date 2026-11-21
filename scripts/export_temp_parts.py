@@ -64,8 +64,8 @@ def build(master, months, out, label):
     for name in months:
         src = master[name]
         visit, rad = sections(src)
-        if not any(src.cell(r, 6).value is None for r in visit + rad):
-            continue  # month finished -> not in the temporary file
+        if not any(src.cell(r, 6).value is None for r in visit + rad) and name != master.sheetnames[-1]:
+            continue  # month finished -> not in the temporary file (the current month always stays)
         dst = wb.create_sheet(name)
         copy_sheet(src, dst)
         for r in visit + rad:

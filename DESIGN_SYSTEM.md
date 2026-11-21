@@ -1,7 +1,7 @@
 # Patient Report Design System
 
 **Source of truth:** the `MUHAMMED DATA - OCT 2026` workbook (now the `Oct-2026` sheet of
-`Faiz_Patient_Data_Master_Nov2025-Oct2026.xlsx`). Code version: `scripts/design_system.py`.
+`Faiz_Patient_Data_Master_Nov2025-Nov2026.xlsx`). Code version: `scripts/design_system.py`.
 
 This design applies to **every sheet of every patient workbook** (and the PDFs exported from them).
 
