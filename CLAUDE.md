@@ -33,8 +33,16 @@ style (zebra banding, text dates, portrait pages).
 - ALLOWED without asking, only when the data is confirmed valid in the user's images (invoice
   screens): add new visit rows, edit amounts, and correct visit details (date, file no., name,
   department/doctor). Keep the old value in a cell note when correcting.
-- NOT allowed without the user's explicit confirmation: deleting anything from the main workbook
-  (rows, visits, amounts, sheets). Ask first and list exactly what would be removed.
+- Deleting a row is allowed ONLY in these two cases (user rule, 21 Nov 2026):
+  1. A true duplicate: same patient + same date + same visit entered twice -> keep one.
+  2. The images FULLY confirm the row is the same visit as a system invoice but recorded with a
+     mistake (e.g. wrong date): the correct row exists/is added from the image, the wrong row goes.
+     Note it in the commit and tell the user exactly which row was removed and why.
+- Everything else: NEVER delete. A visit with no amount / no invoice visible is NOT a wrong row
+  (free follow-ups, services billed another day, or the invoice is on another page of the list).
+- Invoice screenshots may not show a patient's full list: read the pager ("1-10 / 21" = more pages).
+  Only a list whose pager shows all records ("1-8 / 8") counts as complete for reconciliation.
+- Any other deletion (rows, amounts, sheets): ask the user first and list exactly what would go.
 
 ## Naming rule
 - If a patient's full name is not clear or not complete in the source (cut off, partly hidden,
