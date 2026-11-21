@@ -57,6 +57,9 @@ NO_INVOICE = [
 ]
 
 
+FILE_FIXES = {"TVIP009213588": "TVIP00921358"}  # Tawoor Khan
+
+
 def visit_rows(ws):
     rows = []
     for r in range(4, ws.max_row + 1):
@@ -109,6 +112,14 @@ def main(path):
         c.comment = Comment(
             "No invoice on this date in the patient's full invoice list (clinic system). Confirmed real visit "
             "(user, 21 Nov 2026): free follow-up or service billed on another day -> 0.", "Claude")
+    # file-number corrections (user, 21 Nov 2026): extra digit in staff sheets
+    for ws in wb.worksheets[1:]:
+        for r in range(4, ws.max_row + 1):
+            c = ws.cell(r, 3)
+            if str(c.value) in FILE_FIXES:
+                old_no = c.value
+                c.value = FILE_FIXES[old_no]
+                c.comment = Comment(f"File no. corrected (extra digit removed, user 21 Nov 2026). Was {old_no}", "Claude")
     wb.save(path)
     print("visits added from invoices:", len(NEW_VISITS), "| no-invoice visits set to 0:", len(NO_INVOICE))
 
