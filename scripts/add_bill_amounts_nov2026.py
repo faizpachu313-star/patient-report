@@ -158,6 +158,13 @@ AUG = [
     ('visit', '2026-08-11', 'TVIP01017311', 'Pramod Radhakrishna Pillai', 114, None),
     ('visit', '2026-08-11', 'TVIP01017333', 'Abdul Basith Manalodi', 169, None),
     ('visit', '2026-08-05', 'TVIP00796985', 'Ahmed Abou Elfetouh Helal Elesawi', 1667, None),
+    # Spectrum referrals - August 2026 sheet (user: made from the system, valid; total 4144)
+    ('rad', '2026-08-08', '784-1985-3403496-6', 'Jay Singh Bohara', 795, 'Spectrum referrals Aug 2026: MRI 795'),
+    ('rad', '2026-08-10', '784-1986-5350376-7', 'Bipon Kumar Barua Sunil Barua', 795, 'Spectrum referrals Aug 2026: MRI 795'),
+    ('rad', '2026-08-10', '784-1980-4036273-7', 'Fazal Jan Zahir Jan', 459, 'Spectrum referrals Aug 2026: CT 459'),
+    ('rad', '2026-08-17', '784-2006-3523149-9', 'Sonu Jagga Singh', 459, 'Spectrum referrals Aug 2026: CT 459'),
+    ('rad', '2026-08-29', '784-1996-2778384-0', 'Muhammad Tahir Rab Nawaz', 782, 'Spectrum referrals Aug 2026: MRI 782'),
+    ('rad', '2026-08-30', '784-1986-5915314-6', 'Usankutty Na Tukallu', 854, 'Spectrum referrals Aug 2026: MRI 854'),
 ]
 
 
