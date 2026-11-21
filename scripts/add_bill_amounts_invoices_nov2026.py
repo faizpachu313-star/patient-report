@@ -99,6 +99,13 @@ CHANGES = [
     ("Jul-2026", "30.07.2026", "TVIP01017206", 518.6, 665.20,
      "Orthopedic (Dr Agnel) 102.60 + General (Dr Dimeh) 562.60. Was 518.60 (466/52.6)"),
     ("Jul-2026", "31.07.2026", "TVIP01017333", 485, 555.00, "General (Dr Mustafa) 555.00. Was 485"),
+    # ===== batch 3: Kavitha Satheesh full invoice list (21/21 visible) =====
+    ("Aug-2026", "20.08.2026", "TVIP00830448", None, 365.00,
+     "Physiotherapy (Aswathy) 270.00 + Endocrinology (Dr Issam) 95.00"),
+    ("Aug-2026", "21.08.2026", "TVIP00830448", None, 169.00, "Physiotherapy (Fensi) 169.00"),
+    ("Aug-2026", "23.08.2026", "TVIP00830448", None, 169.00, "Physiotherapy (Fensi) 169.00"),
+    ("Aug-2026", "27.08.2026", "TVIP00830448", None, 169.00, "Physiotherapy (Fensi) 169.00"),
+    ("Sep-2026", "25.09.2026", "TVIP00830448", None, 169.00, "Physiotherapy (Fensi) 169.00"),
 ]
 
 
