@@ -118,9 +118,9 @@ NEW_VISITS = {
 }
 # Source: Spectrum_Referrals_Town_Centre_Branch.xlsx - the only 'Done' referral not already
 # in the Oct-2026 radiology list (others matched by name at their scan date).
-OCT_RADIOLOGY = ("24.10.2026", "18639", "Mohamed Abbas", "CT LEFT FOOT",
+OCT_RADIOLOGY = ("24.10.2026", "18639", "Mohamed Abbas", "CT LEFT FOOT", 406.00,
                  "From Spectrum Referrals - Town Centre Branch (status: Done). File no. is the "
-                 "Town Centre EMR #; bill amount not given in source.")
+                 "Town Centre EMR #. Bill amount AED 406 given by the user (21 Nov 2026).")
 
 REF = re.compile(r"(\$?)([A-Z]{1,3})(\$?)(\d+)")
 
@@ -207,14 +207,15 @@ def add_visits(wb, sheet, rows):
 
 def add_oct_radiology(wb):
     ws = wb["Oct-2026"]
-    d, fno, name, exam, note = OCT_RADIOLOGY
+    d, fno, name, exam, amount, note = OCT_RADIOLOGY
     dd = datetime.strptime(d, "%d.%m.%Y")
     hdr = next(r for r in range(1, ws.max_row + 1) if ws.cell(r, 1).value == "Sl No" and r > 3)
     rows = [r for r in range(hdr + 1, ws.max_row + 1) if isinstance(ws.cell(r, 2).value, datetime)]
     idx = next(r for r in rows if ws.cell(r, 2).value > dd)
     insert_row(wb, ws, idx, rows[0])
-    for col, v in zip("BCDE", (dd, fno, name, exam)):
+    for col, v in zip("BCDEF", (dd, fno, name, exam, amount)):
         ws[f"{col}{idx}"] = v
+    ws[f"F{idx}"].number_format = "#,##0.00"
     ws[f"D{idx}"].comment = Comment(note, "Claude")
     renumber(ws, hdr + 1, rows[-1] + 1)
 

@@ -54,7 +54,7 @@ style (zebra banding, text dates, portrait pages).
 - Missing bill amounts stay blank until the data is cleared; keep whatever amounts exist. When one visit
   lists an amount per doctor (`454.2/75`), enter the total and keep the breakdown in a cell note.
 - Rebuild order: base design workbook → `scripts/remove_duplicates.py` → `scripts/merge_uploads_*.py`
-  → `scripts/add_month_*.py` (new months) → `scripts/add_radiology_sections.py` → `scripts/prefix_tmc.py` → `scripts/add_bill_amounts_*.py` → `scripts/add_invoice_visits_*.py` → recalc → PDF.
+  → `scripts/add_month_*.py` (new months) → `scripts/add_radiology_sections.py` → `scripts/prefix_tmc.py` → `scripts/add_bill_amounts_*.py` → `scripts/add_invoice_visits_*.py` → recalc → `scripts/audit_totals.py` (must say OK) → PDF.
 
 ## Temporary amount files (Part A / Part B)
 - `TEMP_Part_A_Nov2025-Jun2026.xlsx` and `TEMP_Part_B_Jul2026-<last month>.xlsx` are TEMPORARY working
