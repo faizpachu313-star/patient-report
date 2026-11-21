@@ -109,6 +109,13 @@ CHANGES = [
     # ===== batch 4: visit screen, amount confirmed by the user =====
     ("Aug-2026", "15.08.2026", "TVIP01019069", None, 95.00,
      "Consultation [99213] unit price 95.00 (visit screen TLV260822629); confirmed by user"),
+    # ===== batch 5: printed July list amounts, CONFIRMED by the user (checked, 21 Nov 2026) =====
+    ("Jul-2026", "30.07.2026", "TVIP01017072", 316, 605.20,
+     "605.20 per printed July list, confirmed by user. Was 316 (faz1_1: 231/0/85/0)"),
+    ("Jul-2026", "30.07.2026", "TVIP01017075", 505.69, 478.69,
+     "478.69 per printed July list, confirmed by user. Was 505.69 (faz1_1: 485/20.69)"),
+    ("Jul-2026", "30.07.2026", "TVIP01017173", 4712, 1557.00,
+     "1,557 per printed July list, confirmed by user. Was 4,712 (faz1_1: 390/817/3505)"),
 ]
 
 
