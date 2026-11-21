@@ -23,7 +23,8 @@ style (zebra banding, text dates, portrait pages).
 - **Source of truth:** the clinic system's invoice screens are the real data; staff Excel sheets can
   contain mistakes. Reconcile each patient's FULL invoice list both ways: invoice days missing in the
   main file are added (amount = sum of that day's invoices, breakdown in a note); main-file rows with no
-  invoice are flagged, not deleted, until the user decides.
+  invoice are NEVER deleted: they are real visits (free follow-ups, or services billed on another
+  day's invoice) and get amount 0 with a note.
 
 - Work order: finish Part B (Jul 2026 onwards) month by month first, then Part A. The current
   (in-progress) month is kept in the Part B TEMP file even when nothing is pending.

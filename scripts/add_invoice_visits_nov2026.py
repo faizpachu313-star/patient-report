@@ -44,7 +44,7 @@ NEW_VISITS = [
 ]
 
 # Rows in the staff sheets that have NO invoice on that date in the patient's full invoice list.
-# Kept (not deleted) and flagged with a note until the user decides.
+# User confirmed these are real visits (free follow-ups / services billed another day): kept, amount 0.
 NO_INVOICE = [
     ("Aug-2026", "01.08.2026", "TVIP01017202"), ("Aug-2026", "04.08.2026", "TVIP01015196"),
     ("Aug-2026", "04.08.2026", "TVIP01001897"), ("Aug-2026", "30.08.2026", "TVIP01020920"),
@@ -96,11 +96,15 @@ def main(path):
         rows, _ = visit_rows(ws)
         hit = [r for r in rows if ws.cell(r, 2).value == dd and str(ws.cell(r, 3).value) == fno]
         assert len(hit) == 1, (sheet, d, fno, hit)
-        ws.cell(hit[0], 6).comment = Comment(
-            "No invoice on this date in the patient's full invoice list (clinic system). "
-            "Possibly a staff-sheet error - awaiting confirmation.", "Claude")
+        c = ws.cell(hit[0], 6)
+        assert c.value in (None, 0), (sheet, d, fno, c.value)
+        c.value = 0
+        c.number_format = "#,##0.00"
+        c.comment = Comment(
+            "No invoice on this date in the patient's full invoice list (clinic system). Confirmed real visit "
+            "(user, 21 Nov 2026): free follow-up or service billed on another day -> 0.", "Claude")
     wb.save(path)
-    print("visits added from invoices:", len(NEW_VISITS), "| no-invoice rows flagged:", len(NO_INVOICE))
+    print("visits added from invoices:", len(NEW_VISITS), "| no-invoice visits set to 0:", len(NO_INVOICE))
 
 
 if __name__ == "__main__":
