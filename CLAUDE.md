@@ -16,6 +16,10 @@ style (zebra banding, text dates, portrait pages).
 - Nov 2025 - Jun 2026 file numbers carry the `TMC` prefix (`TMC124285`, no space). Emirates IDs
   (`784-...`) and other non-TMC IDs are left as they are.
 
+- Software: the old TMC system was used until Jun 2026; the new system (TVIP numbers) from Jul 2026.
+  The new system does NOT show any pre-July data, so Part A amounts can only come from the old TMC
+  system (or other records of it). Invoice screens from the new system are the valid source for Part B.
+
 ## Naming rule
 - If a patient's full name is not clear or not complete in the source (cut off, partly hidden,
   unreadable), write only the **first and second name** (e.g. `Mr MUHAMMAD RIAZ MUHAMM` → `Muhammad Riaz`).
