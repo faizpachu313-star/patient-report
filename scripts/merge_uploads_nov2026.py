@@ -121,6 +121,14 @@ NEW_VISITS = {
 OCT_RADIOLOGY = ("24.10.2026", "18639", "Mohamed Abbas", "CT LEFT FOOT", 406.00,
                  "From Spectrum Referrals - Town Centre Branch (status: Done). File no. is the "
                  "Town Centre EMR #. Bill amount AED 406 given by the user (21 Nov 2026).")
+# Source: second Oct referral list (Dr Hiteshkumar), status 'Done', not yet in the Oct radiology list.
+# File no. is that centre's file #; bill amount not given -> pending.
+OCT_RADIOLOGY_MORE = [
+    ("18.10.2026", "34254", "Mohamed Abdelgaid", "CT RIGHT ELBOW", None,
+     "From Oct referral list (Dr Hiteshkumar), status Done. File no. is that list's file #; amount pending."),
+    ("22.10.2026", "36131", "Sadam Khan Azim Khan", "MRI LS SPINE", None,
+     "From Oct referral list (Dr Hiteshkumar), status Done. File no. is that list's file #; amount pending."),
+]
 
 REF = re.compile(r"(\$?)([A-Z]{1,3})(\$?)(\d+)")
 
@@ -206,8 +214,13 @@ def add_visits(wb, sheet, rows):
 
 
 def add_oct_radiology(wb):
+    for entry in [OCT_RADIOLOGY] + OCT_RADIOLOGY_MORE:
+        _add_oct_rad(wb, entry)
+
+
+def _add_oct_rad(wb, entry):
     ws = wb["Oct-2026"]
-    d, fno, name, exam, amount, note = OCT_RADIOLOGY
+    d, fno, name, exam, amount, note = entry
     dd = datetime.strptime(d, "%d.%m.%Y")
     hdr = next(r for r in range(1, ws.max_row + 1) if ws.cell(r, 1).value == "Sl No" and r > 3)
     rows = [r for r in range(hdr + 1, ws.max_row + 1) if isinstance(ws.cell(r, 2).value, datetime)]
@@ -217,7 +230,8 @@ def add_oct_radiology(wb):
         ws[f"{col}{idx}"] = v
     ws[f"F{idx}"].number_format = "#,##0.00"
     ws[f"D{idx}"].comment = Comment(note, "Claude")
-    renumber(ws, hdr + 1, rows[-1] + 1)
+    rows = [r for r in range(hdr + 1, ws.max_row + 1) if isinstance(ws.cell(r, 2).value, datetime)]
+    renumber(ws, hdr + 1, rows[-1])
 
 
 def main(path):
