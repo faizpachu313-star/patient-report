@@ -106,6 +106,9 @@ CHANGES = [
     ("Aug-2026", "23.08.2026", "TVIP00830448", None, 169.00, "Physiotherapy (Fensi) 169.00"),
     ("Aug-2026", "27.08.2026", "TVIP00830448", None, 169.00, "Physiotherapy (Fensi) 169.00"),
     ("Sep-2026", "25.09.2026", "TVIP00830448", None, 169.00, "Physiotherapy (Fensi) 169.00"),
+    # ===== batch 4: visit screen, amount confirmed by the user =====
+    ("Aug-2026", "15.08.2026", "TVIP01019069", None, 95.00,
+     "Consultation [99213] unit price 95.00 (visit screen TLV260822629); confirmed by user"),
 ]
 
 

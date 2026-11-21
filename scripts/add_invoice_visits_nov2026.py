@@ -43,6 +43,8 @@ NEW_VISITS = [
     ("Oct-2026", "25.10.2026", "TVIP01020920", "Zaid Mustafa Refaieh", [("Dental (Dr Ahmed Yousif Ali)", 675.00)]),
     # visit screen only (no amount shown) -> amount stays pending
     ("Aug-2026", "09.08.2026", "TVIP01018434", "Hamza Ayappalli Saidalavi Ayappalli", [("General (Dr Dimeh)", None)]),
+    # user confirmed (21 Nov 2026): visit on 7 Aug per photo dated 07-08-2026; department/amount not shown
+    ("Aug-2026", "07.08.2026", "TVIP00948643", "Muhammed Hameed", [("", None)]),
 ]
 
 # Rows in the staff sheets that have NO invoice on that date in the patient's full invoice list.
