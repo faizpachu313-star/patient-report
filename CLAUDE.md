@@ -29,6 +29,13 @@ style (zebra banding, text dates, portrait pages).
 - Work order: finish Part B (Jul 2026 onwards) month by month first, then Part A. The current
   (in-progress) month is kept in the Part B TEMP file even when nothing is pending.
 
+## Change permissions (user rule, 21 Nov 2026)
+- ALLOWED without asking, only when the data is confirmed valid in the user's images (invoice
+  screens): add new visit rows, edit amounts, and correct visit details (date, file no., name,
+  department/doctor). Keep the old value in a cell note when correcting.
+- NOT allowed without the user's explicit confirmation: deleting anything from the main workbook
+  (rows, visits, amounts, sheets). Ask first and list exactly what would be removed.
+
 ## Naming rule
 - If a patient's full name is not clear or not complete in the source (cut off, partly hidden,
   unreadable), write only the **first and second name** (e.g. `Mr MUHAMMAD RIAZ MUHAMM` → `Muhammad Riaz`).
