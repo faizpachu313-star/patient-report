@@ -52,6 +52,13 @@ style (zebra banding, text dates, portrait pages).
   `scripts/add_radiology_standard_prices.py`). It is NOT a standing price: US pregnant amounts vary
   (discounts for cash patients, e.g. 260/290/388). New rows stay blank until the real amount is given.
 
+- Source ranking for amounts: (1) clinic-system invoice screens = permanent, always win;
+  (2) staff Excel files and their paper prints = secondary. A staff print never overrides another
+  staff amount on its own: when two staff sources disagree and there is no system invoice, keep the
+  existing value and ask the user for the system screen.
+- One visit row per patient per day: when a patient has several invoices on the same date, the row's
+  amount is the SUM of those invoices (breakdown in the cell note).
+
 ## Naming rule
 - If a patient's full name is not clear or not complete in the source (cut off, partly hidden,
   unreadable), write only the **first and second name** (e.g. `Mr MUHAMMAD RIAZ MUHAMM` → `Muhammad Riaz`).
