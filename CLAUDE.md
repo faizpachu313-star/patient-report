@@ -20,6 +20,11 @@ style (zebra banding, text dates, portrait pages).
   The new system does NOT show any pre-July data, so Part A amounts can only come from the old TMC
   system (or other records of it). Invoice screens from the new system are the valid source for Part B.
 
+- **Source of truth:** the clinic system's invoice screens are the real data; staff Excel sheets can
+  contain mistakes. Reconcile each patient's FULL invoice list both ways: invoice days missing in the
+  main file are added (amount = sum of that day's invoices, breakdown in a note); main-file rows with no
+  invoice are flagged, not deleted, until the user decides.
+
 ## Naming rule
 - If a patient's full name is not clear or not complete in the source (cut off, partly hidden,
   unreadable), write only the **first and second name** (e.g. `Mr MUHAMMAD RIAZ MUHAMM` → `Muhammad Riaz`).
@@ -38,7 +43,7 @@ style (zebra banding, text dates, portrait pages).
 - Missing bill amounts stay blank until the data is cleared; keep whatever amounts exist. When one visit
   lists an amount per doctor (`454.2/75`), enter the total and keep the breakdown in a cell note.
 - Rebuild order: base design workbook → `scripts/remove_duplicates.py` → `scripts/merge_uploads_*.py`
-  → `scripts/add_radiology_sections.py` → `scripts/prefix_tmc.py` → `scripts/add_bill_amounts_*.py` → recalc → PDF.
+  → `scripts/add_radiology_sections.py` → `scripts/prefix_tmc.py` → `scripts/add_bill_amounts_*.py` → `scripts/add_invoice_visits_*.py` → recalc → PDF.
 
 ## Temporary amount files (Part A / Part B)
 - `TEMP_Part_A_Nov2025-Jun2026.xlsx` and `TEMP_Part_B_Jul2026-<last month>.xlsx` are TEMPORARY working
