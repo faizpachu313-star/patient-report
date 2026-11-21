@@ -35,3 +35,12 @@ style (zebra banding, text dates, portrait pages).
   lists an amount per doctor (`454.2/75`), enter the total and keep the breakdown in a cell note.
 - Rebuild order: base design workbook → `scripts/remove_duplicates.py` → `scripts/merge_uploads_*.py`
   → `scripts/add_radiology_sections.py` → `scripts/prefix_tmc.py` → `scripts/add_bill_amounts_*.py` → recalc → PDF.
+
+## Temporary amount files (Part A / Part B)
+- `TEMP_Part_A_Nov2025-Jun2026.xlsx` and `TEMP_Part_B_Jul2026-<last month>.xlsx` are TEMPORARY working
+  copies for filling pending bill amounts (`scripts/export_temp_parts.py`). Yellow = amount pending.
+- They are generated from the main workbook and never edited back into it by hand: when the user
+  returns one, check every amount against the main file row by row (same date, file, name), add the
+  amounts via an `add_bill_amounts_*.py` step, rebuild, then regenerate the TEMP files. A month with no
+  pending amounts drops out of its TEMP file automatically; delete a TEMP file once it has no months.
+- The main workbook must never be changed by the export (verify its checksum before/after).
