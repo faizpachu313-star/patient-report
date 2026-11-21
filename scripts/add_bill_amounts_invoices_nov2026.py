@@ -109,6 +109,14 @@ CHANGES = [
     # ===== batch 4: visit screen, amount confirmed by the user =====
     ("Aug-2026", "15.08.2026", "TVIP01019069", None, 95.00,
      "Consultation [99213] unit price 95.00 (visit screen TLV260822629); confirmed by user"),
+    # ===== batch 5: printed July list (genuine; its 89 amounts sum to the handwritten 43,531) =====
+    # staff Excel (faz1_1) had typos for these three visits, which have no system invoice
+    ("Jul-2026", "30.07.2026", "TVIP01017173", 4712, 1557.00,
+     "Printed July list: 1,557 (= 390 + 817 + 350). Was 4,712: faz1_1 had 390/817/3505 (typo 3505 for 350)"),
+    ("Jul-2026", "30.07.2026", "TVIP01017075", 505.69, 478.69,
+     "Printed July list: 478.69 (= 458 + 20.69). Was 505.69: faz1_1 had 485/20.69"),
+    ("Jul-2026", "30.07.2026", "TVIP01017072", 316, 605.20,
+     "Printed July list: 605.20 (Mustafa, Radi, Higazy, Taha). Was 316: faz1_1 had 231/0/85/0"),
 ]
 
 
