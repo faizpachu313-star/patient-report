@@ -41,6 +41,8 @@ NEW_VISITS = [
      [("Internal Medicine (Dr Ali)", 95.00), ("Dermatology (Dr Shiraz)", 142.00), ("General (Dr Mozammil)", 95.00)]),
     ("Oct-2026", "25.10.2026", "TVIP00849060", "Yasmine Mahmod Sayyo", [("Physiotherapy (Hadir Nour)", 135.00)]),
     ("Oct-2026", "25.10.2026", "TVIP01020920", "Zaid Mustafa Refaieh", [("Dental (Dr Ahmed Yousif Ali)", 675.00)]),
+    # visit screen only (no amount shown) -> amount stays pending
+    ("Aug-2026", "09.08.2026", "TVIP01018434", "Hamza Ayappalli Saidalavi Ayappalli", [("General (Dr Dimeh)", None)]),
 ]
 
 # Rows in the staff sheets that have NO invoice on that date in the patient's full invoice list.
@@ -73,14 +75,16 @@ def main(path):
         later = [r for r in rows if ws.cell(r, 2).value > dd]
         idx = later[0] if later else rows[-1] + 1
         insert_row(wb, ws, idx, rows[0])
-        amount = round(sum(a for _, a in parts), 2)
+        amount = None if any(a is None for _, a in parts) else round(sum(a for _, a in parts), 2)
         svc = ", ".join(p for p, _ in parts)
         for col, v in zip("BCDEF", (dd, fno, name, svc, amount)):
             ws[f"{col}{idx}"] = v
             ds.style_data(ws[f"{col}{idx}"], col)
         ws.row_dimensions[idx].height = 30 if len(svc) > 45 else ds.ROW_H["data"]
-        ws[f"D{idx}"].comment = Comment("Added from the clinic system's invoice list (missing in staff sheet).", "Claude")
-        ws[f"F{idx}"].comment = Comment("Invoices: " + " + ".join(f"{p} {a:.2f}" for p, a in parts), "Claude")
+        ws[f"D{idx}"].comment = Comment("Added from the clinic system (invoice list / visit screen); "
+                                        "missing in staff sheet.", "Claude")
+        if amount is not None:
+            ws[f"F{idx}"].comment = Comment("Invoices: " + " + ".join(f"{p} {a:.2f}" for p, a in parts), "Claude")
         # renumber and widen the month's visit totals to the new last row
         rows, total = visit_rows(ws)
         for i, r in enumerate(rows, 1):
