@@ -1,4 +1,4 @@
-"""Bill amounts from the clinic system's invoice screens (photos sent 21 Nov 2026).
+"""Bill amounts from the clinic system's invoice screens (photos sent 21 Nov 2026, two sets).
 
 Each visit row gets the SUM of that patient's invoices on that date (one row per patient per day).
 Rows are found by sheet + date + file number. Every change asserts the current value first, so a
@@ -52,6 +52,53 @@ CHANGES = [
      "Orthopedic (Dr Ihab) 1272.00 + General (Afsheen) 95.00 + Endocrinology (Dr Issam) 1509.00 (partially paid) "
      "+ Dermatology (Dr Shiraz) 155.00 (not paid). Was 2889.20 (photo list)"),
     ("Aug-2026", "05.08.2026", "TVIP01015196", 85, 95.00, "Orthopedic (Dr Higazy) 95.00. Was 85 (photo list)"),
+    # ===== batch 2 (invoice screens sent 21 Nov 2026, second set) =====
+    # --- September 2026: pending amounts filled ---
+    ("Sep-2026", "12.09.2026", "TVIP01022449", None, 350.00, "Radiology (Dr Mirey Jarjous) 350.00"),
+    ("Sep-2026", "13.09.2026", "TVIP01017206", None, 169.00, "Physiotherapy (Jimshad) 169.00"),
+    ("Sep-2026", "13.09.2026", "TVIP01020917", None, 298.00, "Pediatrics (Dr Zafer) 298.00 (partially paid)"),
+    ("Sep-2026", "14.09.2026", "TVIP01017202", None, 102.60, "Pediatrics (Basel Abdulhamid) 102.60"),
+    ("Sep-2026", "15.09.2026", "TVIP01017206", None, 169.00, "Physiotherapy (Jimshad) 169.00"),
+    ("Sep-2026", "16.09.2026", "TVIP01017333", None, 169.00, "Physiotherapy (Jimshad) 169.00"),
+    ("Sep-2026", "17.09.2026", "TVIP01001897", None, 323.01, "Family Medicine (Dr Montasir) 323.01"),
+    ("Sep-2026", "17.09.2026", "TVIP01017200", None, 188.60, "Pediatrics (Dr Sameh) 188.60"),
+    ("Sep-2026", "17.09.2026", "784-2022-8214492-6", None, 228.00,
+     "Pediatrics (Dr Sameh) 228.00 - invoice file no. TVIP01023240"),
+    ("Sep-2026", "19.09.2026", "784-2018-9979053-5", None, 300.36,
+     "Orthopedic (Dr Higazy) 300.36 - invoice file no. TVIP01023430"),
+    ("Sep-2026", "20.09.2026", "TVIP01017206", None, 169.00, "Physiotherapy (Jimshad) 169.00"),
+    ("Sep-2026", "20.09.2026", "TVIP00849060", None, 412.00,
+     "Physiotherapy (Fensi) 270.00 + Neurology (Dr Miklos) 142.00 (not paid)"),
+    ("Sep-2026", "25.09.2026", "TVIP01020917", None, 138.00, "Pediatrics (Basel Abdulhamid) 138.00"),
+    ("Sep-2026", "25.09.2026", "TVIP00849060", None, 591.31,
+     "Family Medicine (Dr Montasir) 456.31 + Physiotherapy (Hadir Nour) 135.00"),
+    ("Sep-2026", "26.09.2026", "TMC125740", None, 95.00,
+     "Internal Medicine (Dr Ali) 95.00 - invoice file no. TVIP00901649"),
+    ("Sep-2026", "27.09.2026", "TVIP01019925", None, 199.36, "General (Dr Dimeh) 199.36"),
+    # --- August 2026: pending amounts filled ---
+    ("Aug-2026", "15.08.2026", "TMC125740", None, 95.00,
+     "Internal Medicine (Dr Ali) 95.00 - invoice file no. TVIP00901649"),
+    ("Aug-2026", "23.08.2026", "TVIP01019925", None, 669.60, "Family Medicine (Dr Nighet) 669.60"),
+    ("Aug-2026", "27.08.2026", "TVIP01019925", None, 46.00, "Family Medicine (Dr Nighet) 46.00"),
+    ("Aug-2026", "30.08.2026", "TVIP01017333", None, 169.00, "Physiotherapy (Jimshad) 169.00"),
+    ("Aug-2026", "30.08.2026", "TVIP01020917", None, 233.00, "ENT (Dr Nandini) 233.00"),
+    # --- corrections ---
+    ("Aug-2026", "01.08.2026", "TVIP01017200", 0, 244.00,
+     "Radiology (Dr Agnel) 244.00. Was 0 (photo list)"),
+    ("Aug-2026", "01.08.2026", "TVIP01017333", 355, 365.00,
+     "Orthopedic (Dr Agnel) 95.00 + Physiotherapy (Jonel) 270.00. Was 355 (photo list)"),
+    ("Aug-2026", "06.08.2026", "TVIP01017333", 901, 951.00,
+     "Physiotherapy (Jimshad) 169.00 + Orthopedic (Dr Agnel) 782.00. Was 901 (photo list)"),
+    ("Aug-2026", "11.08.2026", "TVIP01017333", 169, 264.00,
+     "General (Dr Mofeed) 95.00 + Physiotherapy (Jimshad) 169.00. Was 169 (photo list)"),
+    ("Jul-2026", "30.07.2026", "TVIP01001897", 425.2, 516.60,
+     "Family Medicine (Dr Nighet) 516.60 (not paid). Was 425.20"),
+    ("Jul-2026", "30.07.2026", "TVIP01017200", 591.2, 745.20,
+     "Pediatrics (Dr Sameh) 573.60 + Orthopedic (Dr Agnel) 171.60. Was 591.20"),
+    ("Jul-2026", "30.07.2026", "TVIP01017202", 476.5, 573.60, "Pediatrics (Dr Sameh) 573.60. Was 476.50"),
+    ("Jul-2026", "30.07.2026", "TVIP01017206", 518.6, 665.20,
+     "Orthopedic (Dr Agnel) 102.60 + General (Dr Dimeh) 562.60. Was 518.60 (466/52.6)"),
+    ("Jul-2026", "31.07.2026", "TVIP01017333", 485, 555.00, "General (Dr Mustafa) 555.00. Was 485"),
 ]
 
 
