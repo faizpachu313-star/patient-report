@@ -33,6 +33,10 @@ style (zebra banding, text dates, portrait pages).
 - ALLOWED without asking, only when the data is confirmed valid in the user's images (invoice
   screens): add new visit rows, edit amounts, and correct visit details (date, file no., name,
   department/doctor). Keep the old value in a cell note when correcting.
+- **Bill amounts are the most important data.** Enter an amount only when it is shown in the user's
+  images/files or given by the user for that specific visit. NEVER apply a standard/assumed price,
+  a bulk fill, or a price inferred from other rows without the user's explicit permission for that
+  exact change (e.g. the one-time US pregnant 390 fill). When in doubt, leave the cell blank and ask.
 - Deleting a row is allowed ONLY in these two cases (user rule, 21 Nov 2026):
   1. A true duplicate: same patient + same date + same visit entered twice -> keep one.
   2. The images FULLY confirm the row is the same visit as a system invoice but recorded with a
