@@ -44,7 +44,9 @@ style (zebra banding, text dates, portrait pages).
   Only a list whose pager shows all records ("1-8 / 8") counts as complete for reconciliation.
 - Any other deletion (rows, amounts, sheets): ask the user first and list exactly what would go.
 
-- Standard radiology prices (user-confirmed) fill only BLANK cells: US PREGNANT = AED 390.
+- US PREGNANT AED 390 was a ONE-TIME fill of the 47 blank cells on 21 Nov 2026 (listed in
+  `scripts/add_radiology_standard_prices.py`). It is NOT a standing price: US pregnant amounts vary
+  (discounts for cash patients, e.g. 260/290/388). New rows stay blank until the real amount is given.
 
 ## Naming rule
 - If a patient's full name is not clear or not complete in the source (cut off, partly hidden,
