@@ -222,6 +222,11 @@ RADIOLOGY = {
     ],
     # From Faiz_Patient_Data_September-2026 (no bill amounts in source)
     "Sep-2026": [
+        # Spectrum referrals Sep 2026 sheet (total 11,053): not in the September-2026 file
+        ('11.09.2026', '784-1998-1902827-7', 'MUHAMMED FAYYAS PUTHALATHTHAZHE', 'MRI', 782,
+         'From Spectrum referrals Sep 2026 list (MRI 782).'),
+        ('19.09.2026', '784-1998-6298134-9', 'SAJJAD KHAN MASOOM KHAN', 'CT', 459,
+         'From Spectrum referrals Sep 2026 list (CT 459).'),
         ('01.09.2026', 'TVIP01021143', 'Shabbir Ahmad Nasar Ul Din', 'CT SCAN', None),
         ('02.09.2026', 'TVIP01014023', 'Supriya Karapu Laxminarayana Puli', 'US PREGNANT', None),
         ('02.09.2026', 'TVIP01021249', 'Sumaira Naz Usman Rashid', 'US PREGNANT', None),
