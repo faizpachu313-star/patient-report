@@ -43,13 +43,13 @@ BILLS = [
     ("Sep-2026", "15.09.2026", "Nasser Mohammed", "TVIP01022861", 1670, "MRI B SHOULDER"),
     ("Sep-2026", "17.09.2026", "Anusha Sandamali", "TVIP01023249", 782, "MRI LUMBR"),
     ("Sep-2026", "17.09.2026", "Amal Abdulla", "TVIP01023104", 854, "MRI KNEE"),
-    ("Sep-2026", "19.09.2026", "Abhishek Gond", "TVIP01023351", 924, "CT SCAN"),
+    ("Sep-2026", "19.09.2026", "Abhishek Gond", "TVIP01023351", 434, "CT SCAN"),  # user: 434 (price list had 924)
     ("Sep-2026", "22.09.2026", "Osman Rohani", "TVIP01023846", 459, "CT SCAN"),
     ("Sep-2026", "22.09.2026", "Safeer Kunnath", "TVIP01023860", 782, "MRI LUMBR"),
     ("Sep-2026", "22.09.2026", "Muhammad Waseem", "TVIP00851673", 782, "MRI LUMBR"),
     ("Sep-2026", "26.09.2026", "Kala Miah", "TVIP01024211", 459, "CT SCAN"),
     ("Sep-2026", "26.09.2026", "Alia Huwaiden", "TVIP00970990", 854, "MRI KNEE"),
-    ("Sep-2026", "27.09.2026", "Abhishek Gond", "TVIP01023351", 924, "MRI HIP WC"),
+    ("Sep-2026", "28.09.2026", "Abhishek Gond", "TVIP01023351", 924, "MRI HIP WC"),  # date per Spectrum list
     ("Sep-2026", "29.09.2026", "Emaan Blaisha", "TVIP00579183", 795, "MRI"),
     ("Sep-2026", "30.09.2026", "Tilak Bahadur", "TVIP01024887", 854, "MRI"),
     ("Sep-2026", "30.09.2026", "", "TVIP01024882", 270, "US RETRO"),  # name blank in main file

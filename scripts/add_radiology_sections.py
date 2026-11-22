@@ -268,7 +268,7 @@ RADIOLOGY = {
         ('26.09.2026', 'TVIP01024200', 'Aliza Anum Syed Mohammed Zaid Khawja', 'US PREGNANT', None),
         ('26.09.2026', 'TVIP01024211', 'Kala Miah Abo Ddor Ali Ddor', 'CT SCAN', None),
         ('26.09.2026', 'TVIP00970990', 'Alia Huwaiden Thiban Ali Alketbi', 'MRI KNEE', None),
-        ('27.09.2026', 'TVIP01023351', 'Abhishek Gond Narvadeshwar Gond', 'MRI HIP WC', None),
+        ('28.09.2026', 'TVIP01023351', 'Abhishek Gond Narvadeshwar Gond', 'MRI HIP WC', None, "Date corrected to 28 Sep per Spectrum Sep 2026 list (user confirmed). Was 27 Sep."),
         ('29.09.2026', 'TVIP00579183', 'Emaan Blaisha Muhammed', 'MRI', None),
         ('30.09.2026', 'TVIP01024887', 'Tilak Bahadur', 'MRI', None),
         ('30.09.2026', 'TVIP01024882', None, 'US RETRO', None, 'Patient name not given in the source file (Faiz_Patient_Data_September-2026).'),
