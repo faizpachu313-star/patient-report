@@ -1,0 +1,95 @@
+# Patient report repo — rules
+
+## Global rule: design system
+Every Excel workbook/sheet created or edited in this repo (and every PDF exported from one)
+MUST follow `DESIGN_SYSTEM.md`, whose source of truth is the `MUHAMMED DATA - OCT 2026` workbook
+(the `Oct-2026` sheet of the master workbook). Use the helpers in `scripts/design_system.py`
+instead of hand-picking fonts, colours, widths or page setup. Do not reintroduce the old
+style (zebra banding, text dates, portrait pages).
+
+## Workflow
+- After changing the master `.xlsx`, recalculate formulas and re-export the matching `.pdf`
+  (`soffice --headless --convert-to pdf <file>.xlsx`) so the two stay in sync.
+- Keep the Summary sheet's per-month formulas pointing at each month's `TOTAL PATIENTS (VISITS)` cell.
+
+## File numbers
+- Nov 2025 - Jun 2026 file numbers carry the `TMC` prefix (`TMC124285`, no space). Emirates IDs
+  (`784-...`) and other non-TMC IDs are left as they are.
+
+- Software: the old TMC system was used until Jun 2026; the new system (TVIP numbers) from Jul 2026.
+  The new system does NOT show any pre-July data, so Part A amounts can only come from the old TMC
+  system (or other records of it). Invoice screens from the new system are the valid source for Part B.
+
+- **Source of truth:** the clinic system's invoice screens are the real data; staff Excel sheets can
+  contain mistakes. Reconcile each patient's FULL invoice list both ways: invoice days missing in the
+  main file are added (amount = sum of that day's invoices, breakdown in a note); main-file rows with no
+  invoice are NEVER deleted: they are real visits (free follow-ups, or services billed on another
+  day's invoice) and get amount 0 with a note.
+
+- Work order: finish Part B (Jul 2026 onwards) month by month first, then Part A. The current
+  (in-progress) month is kept in the Part B TEMP file even when nothing is pending.
+
+## Change permissions (user rule, 21 Nov 2026)
+- ALLOWED without asking, only when the data is confirmed valid in the user's images (invoice
+  screens): add new visit rows, edit amounts, and correct visit details (date, file no., name,
+  department/doctor). Keep the old value in a cell note when correcting.
+- **Bill amounts are the most important data.** Enter an amount only when it is shown in the user's
+  images/files or given by the user for that specific visit. NEVER apply a standard/assumed price,
+  a bulk fill, or a price inferred from other rows without the user's explicit permission for that
+  exact change (e.g. the one-time US pregnant 390 fill). When in doubt, leave the cell blank and ask.
+- Deleting a row is allowed ONLY in these two cases (user rule, 21 Nov 2026):
+  1. A true duplicate: same patient + same date + same visit entered twice -> keep one.
+  2. The images FULLY confirm the row is the same visit as a system invoice but recorded with a
+     mistake (e.g. wrong date): the correct row exists/is added from the image, the wrong row goes.
+     Note it in the commit and tell the user exactly which row was removed and why.
+- Everything else: NEVER delete. A visit with no amount / no invoice visible is NOT a wrong row
+  (free follow-ups, services billed another day, or the invoice is on another page of the list).
+- Invoice screenshots may not show a patient's full list: read the pager ("1-10 / 21" = more pages).
+  Only a list whose pager shows all records ("1-8 / 8") counts as complete for reconciliation.
+- Any other deletion (rows, amounts, sheets): ask the user first and list exactly what would go.
+
+- US PREGNANT AED 390 was a ONE-TIME fill of the 47 blank cells on 21 Nov 2026 (listed in
+  `scripts/add_radiology_standard_prices.py`). It is NOT a standing price: US pregnant amounts vary
+  (discounts for cash patients, e.g. 260/290/388). New rows stay blank until the real amount is given.
+
+- Source ranking for amounts: (1) clinic-system invoice screens = permanent, always win;
+  (2) staff Excel files and their paper prints = secondary. A staff print never overrides another
+  staff amount on its own: when two staff sources disagree and there is no system invoice, keep the
+  existing value and ask the user for the system screen.
+- One visit row per patient per day: when a patient has several invoices on the same date, the row's
+  amount is the SUM of those invoices (breakdown in the cell note).
+
+- Background (user note, for understanding only - never used to fill or change amounts):
+  amounts for the same service vary with the patient's insurance; local (UAE national) patients
+  usually have higher amounts, but they are few in this data so far. First visits are usually
+  similar, extra doctors add invoices, follow-ups often have none, radiology prices vary slightly;
+  physio amounts change with the body part treated.
+
+## Naming rule
+- If a patient's full name is not clear or not complete in the source (cut off, partly hidden,
+  unreadable), write only the **first and second name** (e.g. `Mr MUHAMMAD RIAZ MUHAMM` → `Muhammad Riaz`).
+  Do not guess the missing part. Names are Title Case without Mr/Ms/Mrs.
+
+## Merging new uploads
+- Before adding anything, match every source row against the master by date + file number, then by
+  name (radiology referral lists often use another file system, e.g. Town Centre EMR #, and the
+  referral date differs from the scan date). Only add rows that are genuinely missing; never duplicate.
+- Match tolerantly as well: exported files can carry an extra trailing digit on file numbers
+  (`TVIP010174555` = `TVIP01017455`), run-together names (`Jeganathanperumalperumal`) or a different
+  section (a 'visit' that is really a radiology referral). Same patient + same day = already there.
+- **Duplicate rule:** same patient + same date + same doctor/visit = a double entry → keep only one
+  (merge any extra detail into the kept row). The same patient on different dates is a separate visit
+  and is always kept, however many times they come.
+- Missing bill amounts stay blank until the data is cleared; keep whatever amounts exist. When one visit
+  lists an amount per doctor (`454.2/75`), enter the total and keep the breakdown in a cell note.
+- Rebuild order: base design workbook → `scripts/remove_duplicates.py` → `scripts/merge_uploads_*.py`
+  → `scripts/add_month_*.py` (new months) → `scripts/add_radiology_sections.py` → `scripts/prefix_tmc.py` → `scripts/add_bill_amounts_*.py` → `scripts/add_invoice_visits_*.py` → `scripts/add_radiology_standard_prices.py` → `scripts/add_radiology_bills_*.py` → recalc → `scripts/audit_totals.py` (must say OK) → PDF.
+
+## Temporary amount files (Part A / Part B)
+- `TEMP_Part_A_Nov2025-Jun2026.xlsx` and `TEMP_Part_B_Jul2026-<last month>.xlsx` are TEMPORARY working
+  copies for filling pending bill amounts (`scripts/export_temp_parts.py`). Yellow = amount pending.
+- They are generated from the main workbook and never edited back into it by hand: when the user
+  returns one, check every amount against the main file row by row (same date, file, name), add the
+  amounts via an `add_bill_amounts_*.py` step, rebuild, then regenerate the TEMP files. A month with no
+  pending amounts drops out of its TEMP file automatically; delete a TEMP file once it has no months.
+- The main workbook must never be changed by the export (verify its checksum before/after).
